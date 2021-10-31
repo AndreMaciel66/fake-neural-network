@@ -46,7 +46,8 @@ class Tree(Metric):
             # define 2 parent
             for i in range(2):
                 if filtered_parents:
-                    parent = np.random.choice(filtered_parents)
+                    parent = np.random.choice(
+                        filtered_parents).item()
                     path.parents.append(parent)
                     filtered_parents.remove(parent)
                     i += 1
@@ -54,7 +55,7 @@ class Tree(Metric):
             # define 3 childs
             for i in range(3):
                 if filtered_childs:
-                    child = np.random.choice(filtered_childs)
+                    child = np.random.choice(filtered_childs).item()
                     path.childs.append(child)
                     filtered_childs.remove(child)
                     i += 1
@@ -64,5 +65,8 @@ tree = Tree(5, 5)
 tree.generate_metric_rows()
 tree.generate_random_metrics()
 tree.randomize_network()
+
+if __name__ == '__main__':
+    Tree(5, 5)
 
 print(tree)
