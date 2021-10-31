@@ -11,12 +11,8 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Fake": "Data"}
 
-
-# @app.get("/items/{item_id}")
-# def read_item(item_id: int, q: Optional[str] = None):
-#     return {"item_id": item_id, "q": q}
 
 class Paths(BaseModel):
     name: str
@@ -32,7 +28,3 @@ def read_tree(response_model=List[Paths]):
     tree.randomize_network()
     print(tree.all_paths)
     return tree.all_paths
-
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
